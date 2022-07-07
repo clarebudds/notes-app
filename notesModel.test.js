@@ -1,3 +1,7 @@
+/**
+  @jest-environment jsdom
+ */
+
 const NotesModel = require("./notesModel");
 
 describe("NotesModel", () => {
