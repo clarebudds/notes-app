@@ -51,4 +51,18 @@ describe("Notes view", () => {
       "Get cheese and bread from shop"
     );
   });
+
+  it("Removes text from input when button is pressed", () => {
+    document.body.innerHTML = fs.readFileSync("./index.html");
+
+    const model = new NotesModel();
+    const view = new NotesView(model);
+    const inputEl = document.querySelector("#note-input");
+    const inputButtonEl = document.querySelector("#button-note-input");
+
+    inputEl.value = "Get milk and bread from shop";
+    inputButtonEl.click();
+
+    expect(document.querySelector("#note-input").value).toEqual("");
+  });
 });

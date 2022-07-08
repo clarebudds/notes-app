@@ -8,6 +8,7 @@ class NotesView {
       .addEventListener("click", () => {
         const newNote = document.querySelector("#note-input").value;
         this.addNewNote(newNote);
+        document.querySelector("#note-input").value = "";
       });
   }
 
@@ -17,6 +18,9 @@ class NotesView {
   }
 
   displayNotes() {
+    document.querySelectorAll(".note").forEach((element) => {
+      element.remove();
+    });
     const notes = this.model.getNotes();
     notes.forEach((note) => {
       const noteEl = document.createElement("div");
