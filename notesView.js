@@ -3,14 +3,17 @@ class NotesView {
     this.model = model;
     this.bodyEl = document.querySelector("body");
 
-    this.inputEl = document.querySelector("#note-input");
-    this.inputButtonEl = document.querySelector("#button-note-input");
+    document
+      .querySelector("#button-note-input")
+      .addEventListener("click", () => {
+        const newNote = document.querySelector("#note-input").value;
+        this.addNewNote(newNote);
+      });
+  }
 
-    this.inputButtonEl.addEventListener("click", () => {
-      this.model.addNote(this.inputEl.value);
-      console.log(this.model.getNotes());
-      this.displayNotes();
-    });
+  addNewNote(newNote) {
+    this.model.addNote(newNote);
+    this.displayNotes();
   }
 
   displayNotes() {
